@@ -1,6 +1,0 @@
-Password created.
-Deposited: $500.0
-Withdrawn: $500.0
-Password created.
-Deposited: $400.0
-Withdrawn: $300.0

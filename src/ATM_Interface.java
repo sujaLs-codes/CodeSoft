@@ -16,7 +16,7 @@ class BankAccount {
         Scanner scanner = new Scanner(System.in);
         System.out.println("<<=========== Welcome to the ATM Interface =============>>");
         System.out.println(" ");
-        System.out.println("Did you created PIN code of your ATM, If yes then type 'yes' otherwise 'no' := ");
+        System.out.print("Did you created PIN code of your ATM, If yes then type 'yes' otherwise 'no' := ");
         boolean created = scanner.next().equalsIgnoreCase("yes");
         if (password == 0 && !created) { // If no password has been created yet
             System.out.print("Please create by entering new 4-digit password: ");
@@ -54,16 +54,17 @@ class BankAccount {
 
     // Method to withdraw amount
     public boolean withdraw(double amount) {
-        if (amount > 0 && amount <= balance) {
+        if (amount > 0 && !(balance - amount < 500)) {
             balance -= amount;
             System.out.println("Successfully withdrawn: $" + amount);
             logTransaction("Withdrawn: $" + amount);
             return true;
-        } else if (amount > balance) {
+        }
+        else if (amount > balance) {
             System.out.println("Insufficient balance.");
             return false;
         } else {
-            System.out.println("Withdrawal amount must be positive.");
+            System.out.println("Withdrawal denied, you must maintain minimum balance of $500");
             return false;
         }
     }
